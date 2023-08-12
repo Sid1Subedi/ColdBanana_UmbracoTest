@@ -1,0 +1,52 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+    Layout = "Master.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="py-8 lg:py-16 px-4 mx-auto">
+        <div class="bg-white dark:bg-gray-900 pt-5" id="contactForm">
+            <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Contact Us</h2>
+                <p class="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Let's work together to create something great.</p>
+                <form action="#" class="space-y-8">
+                    <!--Name-->
+                    <div class="mb-3">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="fullName" placeholder=" " name="fullName">
+                            <label for="fullName">Full Name</label>
+                        </div>
+                        <div class="small text-danger" id="fullNameError"></div>
+                    </div>
+                    <!--Email-->
+                    <div class="mb-3">
+                        <div class="form-floating">
+                            <input type="email" class="form-control" id="email" placeholder=" " name="email">
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="small text-danger" id="emailError"></div>
+                    </div>
+                    <!--Message-->
+                    <div class="mb-3">
+                        <div class="form-floating">
+                            <textarea class="form-control" id="message" style="height: 150px;" placeholder=" " name="message"></textarea>
+                            <label for="message">Message</label>
+                        </div>
+                        <div class="small text-danger" id="messageError"></div>
+                    </div>
+                </form>
+                <div class="flex md:order-2">
+                    <button type="button" id="formSubmitBtn" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* Validation of Anti forgery token is enabled by default for v9/v10 now, so it returns 400 cuz you don't have anti forgery token in your request.
+    Source: https://our.umbraco.com/forum/using-umbraco-and-getting-started/109434-v10-need-help-cant-get-ajax-fetch-post-working-using-surfacecontroller
+*@
+@Html.AntiForgeryToken()
+
+<script src="~/scripts/contact/contactscript.js"></script>
